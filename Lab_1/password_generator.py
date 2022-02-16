@@ -27,7 +27,14 @@ def brute_force(length: int, chars: str, correct_password: str) -> None:
 if __name__ == '__main__':
     chars = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯабвгдеёжзийклмнопрстуфхцчшщьыъэюя0123456789'
     length = input('Enter password length: ')
-    user_password = generate_password(int(length), chars)
 
-    print(user_password + "\n")
-    brute_force(int(length), chars, user_password)
+    hitrate = dict.fromkeys(chars, 0)
+
+    for i in range(10000):
+        user_password = generate_password(int(length), chars)
+        for elem in user_password:
+            hitrate[elem] += 1
+
+    for char in hitrate:
+        if hitrate[char] > 0:
+            print(char, hitrate[char])
