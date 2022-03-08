@@ -1,11 +1,11 @@
 def powmod(base: int, exponent: int, mod: int) -> int:
-    res = 1;
+    res = 1
     while exponent != 0:
         if exponent & 1:
             res = int(res * base % mod)
             exponent -= 1
         else:
-            base = int(base * base % mod);
+            base = int(base * base % mod)
             exponent >>= 1
     return res
 
@@ -17,12 +17,12 @@ def factor(number: int) -> list:
     # Same as [2, sqrt(n)]
     while i*i <= n:
         if n % i == 0:
-            fact.append(i);
-            while n % i == 0: n /= i;
+            fact.append(i)
+            while n % i == 0: n /= i
         i += 1
 
     if n > 1:
-        fact.append(n);
+        fact.append(n)
     return fact
 
 
@@ -40,4 +40,4 @@ def generate(number: int) -> int:
         if is_primitive_root:
             return res
         res += 1
-    return -1;
+    return -1
